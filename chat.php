@@ -50,13 +50,12 @@ function create_lookup_info($query)
     $json = json_decode($res, true);
     $queryVector = $json["data"][0]["embedding"];
 
-    // Lấy toàn bộ embedding trong DB
     $stmt = $GLOBALS["pdo"]->query("SELECT file_name, content, vector_blob FROM embeddings");
-    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     $results = [];
 
-    foreach ($rows as $row) {
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+
         $vec = json_decode($row["vector_blob"], true);
         if (!is_array($vec))
             continue;
@@ -72,7 +71,6 @@ function create_lookup_info($query)
 
     usort($results, fn($a, $b) => $b["sim"] <=> $a["sim"]);
 
-    // Trả về top 3
     return array_slice($results, 0, 3);
 }
 
@@ -80,6 +78,7 @@ function create_lookup_info($query)
 // echo create_lookup_info("Hợp đồng mua bán hàng hóa giữa công ty A và công ty B có điều khoản về giao hàng và thanh toán như thế nào?");
 // exit(0); //debug
 $question = $_POST['question'] ?? '';
+// question = "xin chào, kết hôn trước 18 tuổi vi phạm luật nào ko?";
 
 // ====================
 // 1) Lấy top luật liên quan
