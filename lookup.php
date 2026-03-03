@@ -108,6 +108,6 @@ $TOP = 3;
 for ($i = 0; $i < min($TOP, count($results)); $i++) {
     echo "📄 File: " . $results[$i]["file"] . "\n";
     echo "🔎 Similarity: " . round($results[$i]["sim"], 6) . "\n";
-    echo "📌 Content:\n" . mb_substr($results[$i]["content"], 0, 300) . "...\n";
+    echo "📌 Content:\n" . $results[$i]["content"] . "\n";
     echo "----------------------------------------\n\n";
 }
