@@ -1,0 +1,8 @@
+// -----------------------------
+// CONFIG
+// -----------------------------
+$OPENAI_API_KEY = "sk-proj";
+$MODEL = "text-embedding-3-large";
+
+// Kết nối database
+$pdo = new PDO("mysql:host=localhost;dbname=rag;charset=utf8mb4", "root", "");
