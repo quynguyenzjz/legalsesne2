@@ -9,7 +9,7 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #f0f2f5;
+    background: #95979b;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -102,10 +102,24 @@ button {
 button:hover { background: #005fcc; }
 
 .typing { font-style: italic; color: #555; }
+.chat-container {
+    width: 900px;               /* ⭐ chỉnh chiều rộng ở đây */
+    max-width: 95%;             /* responsive */
+    margin: 0 auto;             /* ⭐ canh giữa màn hình */
+    background: white;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid #ddd;   /* ⭐ tạo viền 2 bên */
+    border-right: 1px solid #ddd;
+    background: #f0f2f5;
+}
 </style>
 </head>
 
 <body>
+
+<div class="chat-container">
 
 <header>AI Chatbot</header>
 
@@ -115,6 +129,8 @@ button:hover { background: #005fcc; }
     <input id="question" type="text" placeholder="Gõ câu hỏi..." onkeydown="if(event.key==='Enter') ask();" />
     <button onclick="ask()">Gửi</button>
 </div>
+
+</div> <!-- end chat-container -->
 
 <script>
 function addMessage(content, isUser=false) {

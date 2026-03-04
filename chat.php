@@ -101,7 +101,6 @@ $law_text
 ==================================
 
 Dựa vào nội dung luật trên, hãy trả lời câu hỏi của người dùng và CHỈ dùng thông tin trong luật:
-
 Câu hỏi: $question
 ";
 
